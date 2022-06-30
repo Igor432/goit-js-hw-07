@@ -6,31 +6,20 @@ console.log(galleryItems);
 const galleryList = document.querySelector('.gallery');
 
 
-const img = galleryItems.map((image, index) =>
-
-    `<li class=''gallery__card>
-    <a class="gallery__item" href=${image.original}>
-    <img class="gallery__image" src=${image.preview}" alt=${image.description} />
+const img = galleryItems.map((preview, original, description) => 
+`
+<a class="gallery__item" href="${original}">
+    <img class="gallery__image" src="${preview}" alt="${description}" />
   </a>
-  </li>`)
-  .join('')
+  `
+.join(''));
+
 
 galleryList.insertAdjacentHTML('afterbegin', img);
 
 
 
 
-var photo = document.querySelector('.gallery__item');
-
-photo.addEventListener ('keydown', (event) => {
-    if (event.key === "ArrowLeft") {
-        photo.previous();
-    } else if (event.key === "ArrowRight") {
-        photo.next();
-    } else if (event.key === "Escape") {
-        photo.close();
-        }
-})
 
 
 
