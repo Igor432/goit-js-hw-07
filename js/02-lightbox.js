@@ -6,41 +6,24 @@ console.log(galleryItems);
 const gallery = document.querySelector('.gallery');
 
 
-const img = galleryItems.map((image, index) =>
+const galleryList =  galleryItems.map(({ preview, original, description }) => {
+        return `<li class="gallery__card"><a class="gallery__item" href="${original}">
+        <img class="gallery__image" src="${preview}" alt="${description}" />
+      </a></li>`;
+    }).join('');
+;
+
+gallery.insertAdjacentHTML('afterbegin', galleryList);
+
+/*
+
+const img = galleryItems.map((image) => 
+    
     `<a class="gallery__item" href=${image.original}>
     <img class="gallery__image" src=${image.preview}" alt=${image.description} />
-  </a>`).join('')
+  </a></li>`).join('')
 
 gallery.insertAdjacentHTML('afterbegin', img);
 
-gallery.addEventListener('click', openBig);
 
-
-function openBig(event) {
-event.preventDefault;
-const galleryItem = event.target.classList.contains('gallery__item');
-const url = event.target.dataset.source;
-const src = event.target.src;
-const name = event.target.alt;
-
-if (!galleryItem) {
-    return 
-}
-
-const instance = basicLightbox.create(
-    `<img src=${src} alt=${name} title=""/>`
-);
-
-console.log(instance);
-
-instance.show();
-
-document.addEventListener('keydown', event =>{
-    if (event.key === 'Escape') {
-        instance.close();
-    }
-    return;
-});
-
-
-}
+*/
