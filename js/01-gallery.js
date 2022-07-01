@@ -33,7 +33,7 @@ function openBig(event) {
     document.addEventListener('keydown', event =>{
         if (event.key === 'Escape') {
             instance.close();
-            
+            document.removeEventListener('keydown', event);
         }
         return;
     });
